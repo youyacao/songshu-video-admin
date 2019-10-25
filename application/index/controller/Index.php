@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\admin\controller\Admin;
 use think\captcha\Captcha;
 
 class Index

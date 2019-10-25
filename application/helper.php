@@ -35,7 +35,7 @@ function getIp()
  * @param null $data
  * @return \think\response\Json <br>
  */
-function success($msg = null, $data = null)
+function success($msg = null, $data = null,$page=null,$total=null)
 {
     $return = array("data" => $data, "msg" => $msg, "code" => 0);
 
@@ -44,6 +44,12 @@ function success($msg = null, $data = null)
     }
     if ($msg == null) {
         $return['msg'] = "success";
+    }
+    if($page!=null||$page!=''){
+        $return['page']=$page;
+    }
+    if($total!=null||$total!=''){
+        $return['total']=$total;
     }
     return json($return, 200);
 }
@@ -103,25 +109,28 @@ function error($msg = null, $code = 1)
  * @throws \think\exception\DbException
  * @throws \think\exception\PDOException
  */
-function config($key, $value = null)
+function _config($key, $value = null)
 {
     if ($key) {
         $config = db("config")->where(array("name" => $key))->find();
     } else {
         $config = null;
     }
-    if (!$config) {
-        return null;
-    }
     if ($value == null) {
         return htmlspecialchars($config['value']);
-
     } else {
-        db("config")->where(array("name" => $key))->update(array("value" => $value));
+        if (!$config) {
+            db("config")->insert(array("name"=>$key,"value" => $value));
+            return $value;
+        }else{
+            db("config")->where(array("name" => $key))->update(array("value" => $value));
+        }
+
         return $value;
     }
     return null;
 }
+
 
 function isActiveUrl($url)
 {
@@ -285,15 +294,18 @@ function getUA()
  */
 function u_log($msg = "", $type = "info")
 {
-    $user = session("user");
+    $user = session("admin");
     if (!$user) {
         $id = "-1";
+        $name = "访客";
     } else {
         $id = $user['id'];
+        $name = $user['username'];
     }
 
     $data = [
         "uid" => $id,
+        "username"=>$name,
         "type" => $type,
         "action" => $msg,
         "time" => date("Y-m-d H:i:s", time()),
@@ -303,5 +315,5 @@ function u_log($msg = "", $type = "info")
         "header"=>json_encode(getallheaders(),true),
         "request_data"=>json_encode(input())
     ];
-    Db("user_log")->insert($data);
+    Db("admin_log")->insert($data);
 }
