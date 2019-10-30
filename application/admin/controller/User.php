@@ -57,8 +57,13 @@ class User extends Admin
 
     public function userLog()
     {
+        $where = [];
+        if ('login' == input('type')) {
+            $where = ['type' => 'login'];
+        }
         $page = input("page/i", 1) <= 1 ? 1 : input("page/i", 1);
-        $userLog = Db("user_log")->page($page, 10)->select();
-        return success($userLog);
+        $userLog = Db("user_log")->where($where)->order('time desc')->page($page, 10)->select();
+        $userLogCount = Db("user_log")->where($where)->count();
+        return success("获取成功", $userLog,$page,$userLogCount);
     }
 }

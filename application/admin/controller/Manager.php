@@ -60,7 +60,7 @@ class Manager extends Admin
     public function log(){
         $page = input("page/i", 1) <= 1 ? 1 : input("page/i", 1);
         $pageSize = input("pageSize/i", 10) <= 10 ? 10 : input("pageSize/i", 10);
-        $logList = Db("admin_log")->page($page, $pageSize)->select();
+        $logList = Db("admin_log")->order('time desc')->page($page, $pageSize)->select();
         $count = Db("admin_log")->count();
         return success("获取成功", $logList, $page, $count);
     }

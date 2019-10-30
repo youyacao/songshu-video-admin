@@ -312,8 +312,17 @@ function u_log($msg = "", $type = "info")
         "ip" => getIp(),
         "ua" => getUA(),
         "path" => get_current_url(),
-        "header"=>json_encode(getallheaders(),true),
+        "header"=>json_encode(function_exists('getallheaders')?getallheaders():NginxGetAllHeaders(),true),
         "request_data"=>json_encode(input())
     ];
     Db("admin_log")->insert($data);
+}
+function NginxGetAllHeaders(){//获取请求头
+    $headers = [];
+    foreach ($_SERVER as $name => $value){
+        if (substr($name, 0, 5) == 'HTTP_'){
+            $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+        }
+    }
+    return $headers;
 }
