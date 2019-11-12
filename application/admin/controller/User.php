@@ -6,6 +6,14 @@ namespace app\admin\controller;
 
 class User extends Admin
 {
+    /**
+     * Notes:获取用户列表
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:22
+     * @return \think\response\Json
+     * @throws \think\Exception
+     */
     public function getList()
     {
         $page = input("page/i", 1) <= 1 ? 1 : input("page/i", 1);
@@ -19,20 +27,38 @@ class User extends Admin
                 'phone' => ['like', "%{$name}%"]
             ];
         }
-        $userList = Db("user")->whereOr($where)->page($page, $pageSize)->select();
+        $userList = Db("user")->whereOr($where)->order('create_time desc')->page($page, $pageSize)->select();
 
         $count = Db("user")->whereOr($where)->count();
         return success("获取成功", $userList, $page, $count);
     }
 
+    /**
+     * Notes:删除用户
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:22
+     * @return \think\response\Json
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     */
     public function deleteUser()
     {
         $ids = input('ids/a');
-        u_log("删除用户({$ids})成功");
+        u_log("删除用户(".implode($ids,',')."成功");
         Db("user")->whereIn('id', $ids)->delete();
         return success("删除成功");
     }
 
+    /**
+     * Notes:更新用户信息
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:22
+     * @return \think\response\Json
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     */
     public function updateUser()
     {
         $id = input('id');
@@ -55,6 +81,14 @@ class User extends Admin
         return success("更新成功");
     }
 
+    /**
+     * Notes:用户日志记录
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:22
+     * @return \think\response\Json
+     * @throws \think\Exception
+     */
     public function userLog()
     {
         $where = [];

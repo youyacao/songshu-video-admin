@@ -238,7 +238,6 @@ return [
         // 是否使用 setcookie
         'setcookie' => true,
     ],
-
     //分页配置
     'paginate'               => [
         'type'      => 'bootstrap',

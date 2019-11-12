@@ -4,8 +4,19 @@
 namespace app\admin\controller;
 
 
+use think\Exception;
+use think\response\Json;
+
 class Video extends Admin
 {
+    /**
+     * Notes:获取视频列表
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:22
+     * @return Json
+     * @throws Exception
+     */
     public function getList(){
         $page = input("page/i", 1) <= 1 ? 1 : input("page/i", 1);
         $pageSize = input("pageSize/i", 10) <= 10 ? 10 : input("pageSize/i", 10);
@@ -25,6 +36,10 @@ class Video extends Admin
         if($uid){
             $where['uid'] = $uid;
         }
+        $state = input('state/i');
+        if($state!=null){
+            $where['state'] = $state;
+        }
         $videoList = Db("video v")
             ->join('user u','v.uid = u.id','left')
             ->join('type t','v.type = t.id','left')
@@ -39,6 +54,7 @@ class Video extends Admin
                 'v.img',
                 'v.create_time',
                 'v.type',
+                'v.state',
                 'u.name',
                 't.name type_name',
             ])
@@ -51,23 +67,45 @@ class Video extends Admin
             ->count();
         return success("获取成功", $videoList, $page, $count);
     }
+
+    /**
+     * Notes:删除视频
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:23
+     * @return Json
+     * @throws Exception
+     * @throws \think\exception\PDOException
+     */
     public function deleteVideo(){
         $ids = input('ids/a');
         Db("video")->whereIn('id', $ids)->delete();
-        u_log("删除视频 ({$ids})成功");
+        u_log("删除视频(".implode($ids,',')."成功");
         return success("删除成功");
     }
+
+    /**
+     * Notes:更新视频
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:23
+     * @return Json
+     * @throws Exception
+     * @throws \think\exception\PDOException
+     */
     public function updateVideo(){
         $id = input('id');
         $title = input('title');
         $uid = input('uid');
         $url = input('url');
         $img = input('img');
+        $state = input('state');
         $data = [
             'title' => $title,
             'uid' => $uid,
             'url' => $url,
             'img' => $img,
+            'state' => $state,
         ];
         Db("video")->where(['id' => $id])->update($data);
         u_log("修改视频 {$title}({$id})成功");
