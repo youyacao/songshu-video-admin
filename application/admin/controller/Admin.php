@@ -24,6 +24,15 @@ class Admin extends Controller
         }
 
     }
+
+    /**
+     * Notes:权限验证
+     * User: BigNiu
+     * Date: 2019/11/15
+     * Time: 11:05
+     * @param $admin
+     * @return bool
+     */
     private function auth($admin){
         $request= \think\Request::instance();
 
@@ -34,24 +43,29 @@ class Admin extends Controller
         $action = $request->action();//方法名
         $authGroup = [
             0=>[
+                //广告模块
                 'Advert'=>[
                     'getlist'=>true,
                     'add'=>true,
                     'update'=>true,
                     'delete'=>true,
                 ],
+                //API接口模块
                 'Api'=>[
                     'upload_qiniu'=>true,
                     'upload'=>true
                 ],
+                //评论模块
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>true,
                 ],
+                //系统配置模块
                 'Config'=>[
                     'getconfig'=>true,
                     'setconfig'=>true,
                 ],
+                //管理员模块
                 'Manager'=>[
                     'getlist'=>true,
                     'adduser'=>true,
@@ -60,24 +74,28 @@ class Admin extends Controller
                     'log'=>true,
 
                 ],
+                //分类模块
                 'Type'=>[
                     'getlist'=>true,
                     'addtype'=>true,
                     'updatetype'=>true,
                     'delete'=>true,
                 ],
+                //APP更新模块
                 'Update'=>[
                     'getlist'=>true,
                     'add'=>true,
                     'update'=>true,
                     'delete'=>true,
                 ],
+                //用户模块
                 'User'=>[
                     'getlist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
                     'userlog'=>true,
                 ],
+                //视频模块
                 'Video'=>[
                     'getlist'=>true,
                     'deletevideo'=>true,
@@ -85,24 +103,29 @@ class Admin extends Controller
                 ]
             ],
             1=>[
+                //广告模块
                 'Advert'=>[
                     'getlist'=>true,
                     'add'=>false,
                     'update'=>false,
                     'delete'=>false,
                 ],
+                //API接口模块
                 'Api'=>[
                     'upload_qiniu'=>false,
                     'upload'=>false
                 ],
+                //评论模块
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>false,
                 ],
+                //系统配置模块
                 'Config'=>[
                     'getconfig'=>false,
                     'setconfig'=>false,
                 ],
+                //管理员模块
                 'Manager'=>[
                     'getlist'=>false,
                     'adduser'=>false,
@@ -111,48 +134,57 @@ class Admin extends Controller
                     'log'=>false,
 
                 ],
+                //分类模块
                 'Type'=>[
                     'getlist'=>true,
                     'addtype'=>false,
                     'updatetype'=>false,
                     'delete'=>false,
                 ],
+                //APP更新模块
                 'Update'=>[
                     'getlist'=>true,
                     'add'=>false,
                     'update'=>false,
                     'delete'=>false,
                 ],
+                //用户模块
                 'User'=>[
                     'getlist'=>true,
                     'deleteuser'=>false,
                     'updateuser'=>false,
                     'userlog'=>false,
                 ],
+                //视频模块
                 'Video'=>[
                     'getlist'=>true,
                     'deletevideo'=>false,
                     'updatevideo'=>false,
                 ]
             ],2=>[
+                //广告模块
                 'Advert'=>[
                     'getlist'=>true,
                     'add'=>true,
                     'update'=>true,
                     'delete'=>true,
                 ],
+                //API模块
                 'Api'=>[
                     'upload_qiniu'=>true,
                     'upload'=>true
                 ],
+                //广告模块
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>true,
                 ],
+                //配置模块
                 'Config'=>[
                     'getconfig'=>false,
                     'setconfig'=>false,
                 ],
+                //管理员模块
                 'Manager'=>[
                     'getlist'=>false,
                     'adduser'=>false,
@@ -161,24 +193,28 @@ class Admin extends Controller
                     'log'=>false,
 
                 ],
+                //分类模块
                 'Type'=>[
                     'getlist'=>true,
                     'addtype'=>true,
                     'updatetype'=>true,
                     'delete'=>true,
                 ],
+                //APP更新模块
                 'Update'=>[
                     'getlist'=>true,
                     'add'=>false,
                     'update'=>false,
                     'delete'=>false,
                 ],
+                //用户模块
                 'User'=>[
                     'getlist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
                     'userlog'=>true,
                 ],
+                //视频模块
                 'Video'=>[
                     'getlist'=>true,
                     'deletevideo'=>true,
@@ -186,18 +222,18 @@ class Admin extends Controller
                 ]
             ]
         ];
+        //判断当前登录用户的权限是否包含0,1,2
         if(!$admin['group']||!in_array($admin['group']['role'],[0,1,2])){
             return false;
         }
         $role = $admin['group']['role'];
-
         $controllerRole = $authGroup[$role][$controller];
-
+        //判断控制器是否存在
         if(!$controllerRole)
         {
             return false;
         }
-
+        //判断是否有权限
         $actionRole = $controllerRole[$action];
 
         if(!$actionRole){
