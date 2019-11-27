@@ -29,6 +29,8 @@ Route::controller('follow','api/follow');
 
 Route::controller('search','api/searcher');
 
+Route::controller('text_image','api/textImage');
+
 
 
 Route::controller('captcha','index/index/captcha');

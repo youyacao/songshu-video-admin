@@ -59,6 +59,7 @@ class Admin extends Controller
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>true,
+                    'update'=>true,
                 ],
                 //系统配置模块
                 'Config'=>[
@@ -100,6 +101,12 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>true,
                     'updatevideo'=>true,
+                ],
+                //图文模块模块
+                'TextImage'=>[
+                    'getlist'=>true,
+                    'delete'=>true,
+                    'update'=>true,
                 ]
             ],
             1=>[
@@ -119,6 +126,7 @@ class Admin extends Controller
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>false,
+                    'update'=>false,
                 ],
                 //系统配置模块
                 'Config'=>[
@@ -160,6 +168,12 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>false,
                     'updatevideo'=>false,
+                ],
+                //图文模块模块
+                'TextImage'=>[
+                    'getlist'=>true,
+                    'delete'=>false,
+                    'update'=>false,
                 ]
             ],2=>[
                 //广告模块
@@ -178,6 +192,7 @@ class Admin extends Controller
                 'Comment'=>[
                     'getlist'=>true,
                     'del'=>true,
+                    'update'=>true,
                 ],
                 //配置模块
                 'Config'=>[
@@ -219,6 +234,12 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>true,
                     'updatevideo'=>true,
+                ],
+                //图文模块模块
+                'TextImage'=>[
+                    'getlist'=>true,
+                    'delete'=>true,
+                    'update'=>true,
                 ]
             ]
         ];
