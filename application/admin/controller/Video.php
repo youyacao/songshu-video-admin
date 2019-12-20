@@ -43,6 +43,7 @@ class Video extends Admin
         $videoList = Db("video v")
             ->join('user u','v.uid = u.id','left')
             ->join('type t','v.type = t.id','left')
+            ->join('type t1','t1.id = t.pid','left')
             ->whereOr($whereOr)
             ->where($where)
             ->page($page, $pageSize)
@@ -57,6 +58,8 @@ class Video extends Admin
                 'v.state',
                 'u.name',
                 't.name type_name',
+                't1.name ptype_name',
+                't1.id pid',
             ])
             ->order("create_time desc")
             ->select();
@@ -67,6 +70,7 @@ class Video extends Admin
             ->count();
         return success("获取成功", $videoList, $page, $count);
     }
+
 
     /**
      * Notes:删除视频

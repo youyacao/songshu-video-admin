@@ -65,6 +65,7 @@ class User extends Admin
         $name = input('name');
         $custom_id = input('custom_id');
         $phone = input('phone');
+        $vip_end = input('vip_end');
         $head_img = input('head_img');
         $qq = input('qq');
         $mail = input('mail');
@@ -75,6 +76,7 @@ class User extends Admin
             'head_img' => $head_img,
             'qq' => $qq,
             'mail' => $mail,
+            'vip_end' => $vip_end,
         ];
         u_log("修改用户 {$name}({$id})成功");
         Db("user")->where(['id' => $id])->update($data);

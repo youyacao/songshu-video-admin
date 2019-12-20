@@ -92,6 +92,7 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'getalllist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
                     'userlog'=>true,
@@ -101,13 +102,33 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>true,
                     'updatevideo'=>true,
+                    'addvideo'=>true,
                 ],
-                //图文模块模块
+                //图文模块
                 'TextImage'=>[
                     'getlist'=>true,
                     'delete'=>true,
                     'update'=>true,
+                ],
+                //订单模块
+                'Order'=>[
+                    'getlist'=>true
+                ],
+                //支付类型模块
+                'PayType'=>[
+                    'getlist'=>true,
+                    'add'=>true,
+                    'delete'=>true,
+                    'update'=>true,
+                ],
+                //VIP商品模块
+                'VipShop'=>[
+                    'getlist'=>true,
+                    'add'=>true,
+                    'delete'=>true,
+                    'update'=>true,
                 ]
+
             ],
             1=>[
                 //广告模块
@@ -159,6 +180,7 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'getalllist'=>true,
                     'deleteuser'=>false,
                     'updateuser'=>false,
                     'userlog'=>false,
@@ -168,10 +190,29 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>false,
                     'updatevideo'=>false,
+                    'addvideo'=>false,
                 ],
                 //图文模块模块
                 'TextImage'=>[
                     'getlist'=>true,
+                    'delete'=>false,
+                    'update'=>false,
+                ],
+                //订单模块
+                'Order'=>[
+                    'getlist'=>true
+                ],
+                //支付类型模块
+                'PayType'=>[
+                    'getlist'=>true,
+                    'add'=>true,
+                    'delete'=>true,
+                    'update'=>true,
+                ],
+                //VIP商品模块
+                'VipShop'=>[
+                    'getlist'=>true,
+                    'add'=>false,
                     'delete'=>false,
                     'update'=>false,
                 ]
@@ -225,6 +266,7 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'getalllist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
                     'userlog'=>true,
@@ -234,10 +276,28 @@ class Admin extends Controller
                     'getlist'=>true,
                     'deletevideo'=>true,
                     'updatevideo'=>true,
+                    'addvideo'=>true,
                 ],
                 //图文模块模块
                 'TextImage'=>[
                     'getlist'=>true,
+                    'delete'=>true,
+                    'update'=>true,
+                ],
+                //订单模块
+                'Order'=>[
+                    'getlist'=>true
+                ],
+                //支付类型模块
+                'PayType'=>[
+                    'getlist'=>true,
+                    'delete'=>false,
+                    'update'=>false,
+                ],
+                //VIP商品模块
+                'VipShop'=>[
+                    'getlist'=>true,
+                    'add'=>true,
                     'delete'=>true,
                     'update'=>true,
                 ]
