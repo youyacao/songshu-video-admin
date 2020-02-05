@@ -43,6 +43,7 @@ class Video extends Admin
         $videoList = Db("video v")
             ->join('user u','v.uid = u.id','left')
             ->join('type t','v.type = t.id','left')
+            ->join('type t1','t1.id = t.pid','left')
             ->whereOr($whereOr)
             ->where($where)
             ->page($page, $pageSize)
@@ -57,6 +58,8 @@ class Video extends Admin
                 'v.state',
                 'u.name',
                 't.name type_name',
+                't1.name ptype_name',
+                't1.id pid',
             ])
             ->order("create_time desc")
             ->select();
@@ -67,6 +70,7 @@ class Video extends Admin
             ->count();
         return success("获取成功", $videoList, $page, $count);
     }
+
 
     /**
      * Notes:删除视频
@@ -110,5 +114,46 @@ class Video extends Admin
         Db("video")->where(['id' => $id])->update($data);
         u_log("修改视频 {$title}({$id})成功");
         return success("更新成功");
+    }
+	/** 添加视频
+     * Notes: <br>
+     * User:bigniu <br>
+     * Date:2019-12-07 <br>
+     * Time:17:38:52 <br>
+     * @return Json <br>
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function addVideo()
+    {
+        $uid = input("uid/i",1);
+        $title = input("title");//标题
+        $url = input("url");//视频链接
+        $type = input("type");//视频类型
+        $img = input('img');//通过视频存储路径获取视略缩图"1.png";//
+        $user = Db("user")->where(['id'=>$uid])->find();
+        if(!$user){
+            return error("该用户不存在，请重新选择");
+        }
+
+        $typeInfo = Db("type")->where(['id' => $type, "level" => 2])->find();
+        if (!$typeInfo) {
+            u_log("用户" . $user['name'] . "(" . $user['id'] . ")发布视频失败('类型选择错误')", "error");
+            return error("类型选择错误");
+        }
+        $data = [
+            "title" => $title,
+            "uid" => $user['id'],
+            "type" => $type,//视频分类
+            "img" => $img,
+            "url" => $url,
+            "state" => 1,
+            "create_time" => TIME
+        ];
+        $id = Db("video")->insertGetId($data);
+        $data['id'] = $id;
+        u_log("用户" . $user['name'] . "(" . $user['id'] . ")发布视频成功");
+        return success("成功", $data);
     }
 }

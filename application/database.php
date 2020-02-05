@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'douyin_com',
     // 用户名
-    'username'        => 'douyin_com',
+    'username'        => 'root',
     // 密码
-    'password'        => 'H3fYTi2JGe',
+    'password'        => '1234',
     // 端口
     'hostport'        => '',
     // 连接dsn

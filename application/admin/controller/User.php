@@ -65,9 +65,12 @@ class User extends Admin
         $name = input('name');
         $custom_id = input('custom_id');
         $phone = input('phone');
+        $vip_end = input('vip_end');
         $head_img = input('head_img');
         $qq = input('qq');
         $mail = input('mail');
+        $disable = input('disable');
+        $disable_time = input('disable_time');
         $data = [
             'name' => $name,
             'custom_id' => $custom_id,
@@ -75,6 +78,9 @@ class User extends Admin
             'head_img' => $head_img,
             'qq' => $qq,
             'mail' => $mail,
+            'vip_end' => $vip_end,
+            'disable' => $disable,
+            'disable_time' => $disable_time,
         ];
         u_log("修改用户 {$name}({$id})成功");
         Db("user")->where(['id' => $id])->update($data);
