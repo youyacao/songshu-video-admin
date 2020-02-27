@@ -92,6 +92,11 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'invite'=>true,
+                    'getinvitelist'=>true,
+                    'getchangelist'=>true,
+                    'getwithdrawlist'=>true,
+                    'postwithdraw'=>true,
                     'getalllist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
@@ -180,6 +185,11 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'invite'=>false,
+                    'getinvitelist'=>true,
+                    'getchangelist'=>true,
+                    'getwithdrawlist'=>true,
+                    'postwithdraw'=>false,
                     'getalllist'=>true,
                     'deleteuser'=>false,
                     'updateuser'=>false,
@@ -266,6 +276,11 @@ class Admin extends Controller
                 //用户模块
                 'User'=>[
                     'getlist'=>true,
+                    'invite'=>true,
+                    'getinvitelist'=>true,
+                    'getchangelist'=>true,
+                    'getwithdrawlist'=>true,
+                    'postwithdraw'=>true,
                     'getalllist'=>true,
                     'deleteuser'=>true,
                     'updateuser'=>true,
