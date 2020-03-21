@@ -3,3 +3,4 @@
 runtime
 *.zip
 .user.ini
+.htaccess
