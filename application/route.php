@@ -13,6 +13,8 @@ use think\Route;
 
 Route::controller('video','api/video');
 
+Route::controller('subject','api/subject');
+
 Route::controller('type','api/type');
 
 Route::controller('user','api/user');

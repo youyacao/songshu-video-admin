@@ -104,6 +104,11 @@ class Admin extends Controller
                     'updatevideo'=>true,
                     'addvideo'=>true,
                 ],
+                'Subject'=>[
+                    'getlist'=>true,
+                    'savesubject'=>true,
+                    'issubject'=>true,
+                ],
                 //图文模块
                 'TextImage'=>[
                     'getlist'=>true,
@@ -192,6 +197,11 @@ class Admin extends Controller
                     'updatevideo'=>false,
                     'addvideo'=>false,
                 ],
+                'Subject'=>[
+                    'getlist'=>true,
+                    'savesubject'=>false,
+                    'issubject'=>false,
+                ],
                 //图文模块模块
                 'TextImage'=>[
                     'getlist'=>true,
@@ -278,6 +288,11 @@ class Admin extends Controller
                     'updatevideo'=>true,
                     'addvideo'=>true,
                 ],
+                'Subject'=>[
+                    'getlist'=>true,
+                    'savesubject'=>true,
+                    'issubject'=>true,
+                ],
                 //图文模块模块
                 'TextImage'=>[
                     'getlist'=>true,
@@ -309,6 +324,7 @@ class Admin extends Controller
         }
         $role = $admin['group']['role'];
         $controllerRole = $authGroup[$role][$controller];
+        
         //判断控制器是否存在
         if(!$controllerRole)
         {

@@ -55,6 +55,7 @@ class Video extends Admin
                 'v.img',
                 'v.create_time',
                 'v.type',
+                'v.is_subject',
                 'v.state',
                 'u.name',
                 't.name type_name',
