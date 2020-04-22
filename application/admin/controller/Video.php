@@ -98,26 +98,38 @@ class Video extends Admin
      * @throws Exception
      * @throws \think\exception\PDOException
      */
-    public function addVideo(){
-        $title = input('title');
-        $uid = input('uid');
-        $type = input('type');
-        $url = input('url');
-        $img = input('img');
-        $state = 1;
+    public function addVideo()
+    {
+        $uid = input("uid/i",1);
+        $title = input("title");//标题
+        $url = input("url");//视频链接
+        $type = input("type");//视频类型
+        $img = input('img');//通过视频存储路径获取视略缩图"1.png";//
+        $user = Db("user")->where(['id'=>$uid])->find();
+        if(!$user){
+            return error("该用户不存在，请重新选择");
+        }
+
+        $typeInfo = Db("type")->where(['id' => $type, "level" => 2])->find();
+        if (!$typeInfo) {
+            u_log("用户" . $user['name'] . "(" . $user['id'] . ")发布视频失败('类型选择错误')", "error");
+            return error("类型选择错误");
+        }
         $data = [
-            'title' => $title,
-            'uid' => $uid,
-            'type' => $type,
-            'url' => $url,
-            'img' => $img,
-            'state' => $state,
-            'create_time' => date('Y-m-d H:i:s')
+            "title" => $title,
+            "uid" => $user['id'],
+            "type" => $type,//视频分类
+            "img" => $img,
+            "url" => $url,
+            "state" => 1,
+            "create_time" => TIME
         ];
-        Db("video")->insert($data);
-        u_log("添加视频 {$title}()成功");
-        return success("添加成功");
+        $id = Db("video")->insertGetId($data);
+        $data['id'] = $id;
+        u_log("用户" . $user['name'] . "(" . $user['id'] . ")发布视频成功");
+        return success("成功", $data);
     }
+
 
     /**
      * Notes:更新视频
