@@ -104,7 +104,7 @@ class Video extends Admin
         $type = input('type');
         $url = input('url');
         $img = input('img');
-        $state = input('state');
+        $state = 1;
         $data = [
             'title' => $title,
             'uid' => $uid,
@@ -112,6 +112,7 @@ class Video extends Admin
             'url' => $url,
             'img' => $img,
             'state' => $state,
+            'create_time' => date('Y-m-d H:i:s')
         ];
         Db("video")->insert($data);
         u_log("添加视频 {$title}()成功");
