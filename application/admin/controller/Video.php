@@ -62,7 +62,7 @@ class Video extends Admin
                 't1.name ptype_name',
                 't1.id pid',
             ])
-            ->order("create_time desc")
+            ->order("v.id desc")
             ->select();
 
         $count = Db("video")
@@ -87,6 +87,35 @@ class Video extends Admin
         Db("video")->whereIn('id', $ids)->delete();
         u_log("删除视频(".implode($ids,',')."成功");
         return success("删除成功");
+    }
+
+    /**
+     * Notes:添加视频
+     * User: BigNiu
+     * Date: 2019/10/31
+     * Time: 14:23
+     * @return Json
+     * @throws Exception
+     * @throws \think\exception\PDOException
+     */
+    public function addVideo(){
+        $title = input('title');
+        $uid = input('uid');
+        $type = input('type');
+        $url = input('url');
+        $img = input('img');
+        $state = input('state');
+        $data = [
+            'title' => $title,
+            'uid' => $uid,
+            'type' => $type,
+            'url' => $url,
+            'img' => $img,
+            'state' => $state,
+        ];
+        Db("video")->insert($data);
+        u_log("添加视频 {$title}()成功");
+        return success("添加成功");
     }
 
     /**
