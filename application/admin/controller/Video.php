@@ -144,12 +144,14 @@ class Video extends Admin
         $id = input('id');
         $title = input('title');
         $uid = input('uid');
+        $type = input("type");//视频类型
         $url = input('url');
         $img = input('img');
         $state = input('state');
         $data = [
             'title' => $title,
             'uid' => $uid,
+            "type" => $type,
             'url' => $url,
             'img' => $img,
             'state' => $state,
