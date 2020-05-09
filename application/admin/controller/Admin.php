@@ -38,7 +38,7 @@ class Admin extends Controller
 
 //        $module = $request->module();//模块名
 
-        $controller = $request->controller();//控制器名
+        $controller = strtolower($request->controller());//控制器名
 
         $action = $request->action();//方法名
         $authGroup = [

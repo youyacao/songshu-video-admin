@@ -282,7 +282,7 @@ class User extends Admin
             'mail' => $mail,
             'vip_end' => $vip_end,
             'disable' => $disable,
-            'disable_time' => $disable_time
+            'disable_time' => $disable_time,
         ];
         u_log("修改用户 {$name}({$id})成功");
         Db("user")->where(['id' => $id])->update($data);
