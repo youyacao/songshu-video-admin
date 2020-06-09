@@ -57,6 +57,7 @@ class Video extends Admin
                 'v.type',
                 'v.is_subject',
                 'v.need_gold',
+                'v.skr_count',
                 'v.state',
                 'u.name',
                 't.name type_name',
@@ -107,6 +108,7 @@ class Video extends Admin
         $type = input("type");//视频类型
         $img = input('img');//通过视频存储路径获取视略缩图"1.png";//
         $need_gold = intval(input('need_gold'));
+        $skr_count = intval(input('skr_count'));
         $user = Db("user")->where(['id'=>$uid])->find();
         if(!$user){
             return error("该用户不存在，请重新选择");
@@ -124,6 +126,7 @@ class Video extends Admin
             "img" => $img,
             "url" => $url,
             'need_gold' => $need_gold,
+            'skr_count' => $skr_count,
             "state" => 1,
             "create_time" => TIME
         ];
@@ -151,6 +154,7 @@ class Video extends Admin
         $url = input('url');
         $img = input('img');
         $need_gold = intval(input('need_gold'));
+        $skr_count = intval(input('skr_count'));
         $state = input('state');
         $data = [
             'title' => $title,
@@ -159,6 +163,7 @@ class Video extends Admin
             'url' => $url,
             'img' => $img,
             'need_gold' => $need_gold,
+            'skr_count' => $skr_count,
             'state' => $state,
         ];
         Db("video")->where(['id' => $id])->update($data);
