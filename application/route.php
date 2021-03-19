@@ -33,7 +33,7 @@ Route::controller('search','api/searcher');
 
 Route::controller('text_image','api/textImage');
 
-
+Route::controller('cipher','api/cipher');
 
 Route::controller('captcha','index/index/captcha');
 return [
