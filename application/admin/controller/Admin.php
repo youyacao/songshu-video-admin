@@ -224,6 +224,12 @@ class Admin extends Controller
                     'delete'=>false,
                     'update'=>false,
                 ],
+                //卡密模块
+                'Cipher'=>[
+                    'getlist'=>true,
+                    'delete'=>true,
+                    'update'=>true,
+                ],
                 //订单模块
                 'Order'=>[
                     'getlist'=>true
@@ -316,6 +322,12 @@ class Admin extends Controller
                 ],
                 //图文模块模块
                 'TextImage'=>[
+                    'getlist'=>true,
+                    'delete'=>true,
+                    'update'=>true,
+                ],
+                //卡密模块
+                'Cipher'=>[
                     'getlist'=>true,
                     'delete'=>true,
                     'update'=>true,
