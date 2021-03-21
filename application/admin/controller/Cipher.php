@@ -22,6 +22,9 @@ class Cipher extends Admin
       $page = input("page/i", 1) <= 1 ? 1 : input("page/i", 1);
       $pageSize = input("pageSize/i", 10) <= 10 ? 10 : input("pageSize/i", 10);
       $list = Db("cipher")->page($page, $pageSize)->select();
+      foreach ($list as &$value) {
+          $value['over_time'] = date('Y-m-d', $value['over_time']);
+      }
       $count = Db("cipher")->count();
       return success("获取成功", $list, $page, $count);
   }
