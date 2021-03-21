@@ -124,7 +124,7 @@ class Admin extends Controller
                 'Cipher'=>[
                     'getlist'=>true,
                     'delete'=>true,
-                    'update'=>true,
+                    'add'=>true,
                 ],
                 //订单模块
                 'Order'=>[
@@ -228,7 +228,7 @@ class Admin extends Controller
                 'Cipher'=>[
                     'getlist'=>true,
                     'delete'=>true,
-                    'update'=>true,
+                    'add'=>true,
                 ],
                 //订单模块
                 'Order'=>[
@@ -330,7 +330,7 @@ class Admin extends Controller
                 'Cipher'=>[
                     'getlist'=>true,
                     'delete'=>true,
-                    'update'=>true,
+                    'add'=>true,
                 ],
                 //订单模块
                 'Order'=>[
