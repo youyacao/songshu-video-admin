@@ -1,133 +1,1469 @@
-ThinkPHP 5.0
-===============
+# songshu-video-uniapp-YYC松鼠短视频源码-开源--优雅草科技官方发布
 
-[![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
-[![Latest Stable Version](https://poser.pugx.org/topthink/think/v/stable)](https://packagist.org/packages/topthink/think)
-[![Latest Unstable Version](https://poser.pugx.org/topthink/think/v/unstable)](https://packagist.org/packages/topthink/think)
-[![License](https://poser.pugx.org/topthink/think/license)](https://packagist.org/packages/topthink/think)
 
-ThinkPHP5在保持快速开发和大道至简的核心理念不变的同时，PHP版本要求提升到5.4，对已有的CBD模式做了更深的强化，优化核心，减少依赖，基于全新的架构思想和命名空间实现，是ThinkPHP突破原有框架思路的颠覆之作，其主要特性包括：
+动图演示：
 
- + 基于命名空间和众多PHP新特性
- + 核心功能组件化
- + 强化路由功能
- + 更灵活的控制器
- + 重构的模型和数据库类
- + 配置文件可分离
- + 重写的自动验证和完成
- + 简化扩展机制
- + API支持完善
- + 改进的Log类
- + 命令行访问支持
- + REST支持
- + 引导文件支持
- + 方便的自动生成定义
- + 真正惰性加载
- + 分布式环境支持
- + 更多的社交类库
+![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/b14108056bdd6e96cfb16cae54976a0e.gif#pic_center)
 
-> ThinkPHP5的运行环境要求PHP5.4以上。
 
-详细开发文档参考 [ThinkPHP5完全开发手册](http://www.kancloud.cn/manual/thinkphp5)
+#### 仓库关联
+前端：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
-## 目录结构
+服务端：[https://gitee.com/youyacao/songshu-video-back/tree/develop/](https://gitee.com/youyacao/songshu-video-back/tree/develop/)
+后台管理：[https://gitee.com/youyacao/songshu-video-admin/tree/master/](https://gitee.com/youyacao/songshu-video-admin/tree/master/)
+后台管理的前端：[https://gitee.com/youyacao/songshu-video-admin-vue/tree/develop/](https://gitee.com/youyacao/songshu-video-admin-vue/tree/develop/)
 
-初始的目录结构如下：
 
-~~~
-www  WEB部署目录（或者子目录）
-├─application           应用目录
-│  ├─common             公共模块目录（可以更改）
-│  ├─module_name        模块目录
-│  │  ├─config.php      模块配置文件
-│  │  ├─common.php      模块函数文件
-│  │  ├─controller      控制器目录
-│  │  ├─model           模型目录
-│  │  ├─view            视图目录
-│  │  └─ ...            更多类库目录
-│  │
-│  ├─command.php        命令行工具配置文件
-│  ├─common.php         公共函数文件
-│  ├─config.php         公共配置文件
-│  ├─route.php          路由配置文件
-│  ├─tags.php           应用行为扩展定义文件
-│  └─database.php       数据库配置文件
-│
-├─public                WEB目录（对外访问目录）
-│  ├─index.php          入口文件
-│  ├─router.php         快速测试文件
-│  └─.htaccess          用于apache的重写
-│
-├─thinkphp              框架系统目录
-│  ├─lang               语言文件目录
-│  ├─library            框架类库目录
-│  │  ├─think           Think类库包目录
-│  │  └─traits          系统Trait目录
-│  │
-│  ├─tpl                系统模板目录
-│  ├─base.php           基础定义文件
-│  ├─console.php        控制台入口文件
-│  ├─convention.php     框架惯例配置文件
-│  ├─helper.php         助手函数文件
-│  ├─phpunit.xml        phpunit配置文件
-│  └─start.php          框架入口文件
-│
-├─extend                扩展类库目录
-├─runtime               应用的运行时目录（可写，可定制）
-├─vendor                第三方类库目录（Composer依赖库）
-├─build.php             自动生成定义文件（参考）
-├─composer.json         composer 定义文件
-├─LICENSE.txt           授权说明文件
-├─README.md             README 文件
-├─think                 命令行入口文件
-~~~
+注意后端和后台管理前端要用develop分支，其他部分用master分支
 
-> router.php用于php自带webserver支持，可用于快速测试
-> 切换到public目录后，启动命令：php -S localhost:8888  router.php
-> 上面的目录结构和名称是可以改变的，这取决于你的入口文件和配置参数。
 
-## 命名规范
 
-`ThinkPHP5`遵循PSR-2命名规范和PSR-4自动加载规范，并且注意如下规范：
+#### 说明
 
-### 目录和文件
 
-*   目录不强制规范，驼峰和小写+下划线模式均支持；
-*   类库、函数文件统一以`.php`为后缀；
-*   类的文件名均以命名空间定义，并且命名空间的路径和类库文件所在路径一致；
-*   类名和类文件名保持一致，统一采用驼峰法命名（首字母大写）；
+松鼠短视频于8月13日完全彻底开源-请遵循授权条款以及开源协议合法使用本产品，
 
-### 函数和类、属性命名
 
-*   类的命名采用驼峰法，并且首字母大写，例如 `User`、`UserType`，默认不需要添加后缀，例如`UserController`应该直接命名为`User`；
-*   函数的命名使用小写字母和下划线（小写字母开头）的方式，例如 `get_client_ip`；
-*   方法的命名使用驼峰法，并且首字母小写，例如 `getUserName`；
-*   属性的命名使用驼峰法，并且首字母小写，例如 `tableName`、`instance`；
-*   以双下划线“__”打头的函数或方法作为魔法方法，例如 `__call` 和 `__autoload`；
 
-### 常量和配置
+查看协议：[https://songshu.youyacao.com/detail/240.html](https://songshu.youyacao.com/detail/240.html)
 
-*   常量以大写字母和下划线命名，例如 `APP_PATH`和 `THINK_PATH`；
-*   配置参数以小写字母和下划线命名，例如 `url_route_on` 和`url_convert`；
+免费gitee下载地址：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
-### 数据表和字段
+论坛下载地址：[https://bbs.youyacao.com/thread-164-1-1.html](https://bbs.youyacao.com/thread-164-1-1.html)
 
-*   数据表和字段采用小写加下划线方式命名，并注意字段名不要以下划线开头，例如 `think_user` 表和 `user_name`字段，不建议使用驼峰和中文作为数据表字段命名。
+安装文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.youyacao.com/web/#/17?page_id=199)
 
-## 参与开发
+API接口文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.youyacao.com/web/#/17?page_id=199)
 
-请参阅 [ThinkPHP5 核心框架包](https://github.com/top-think/framework)。
+更新日志：[https://doc.youyacao.com/web/#/9?page_id=637](https://doc.youyacao.com/web/#/9?page_id=637)
 
-## 版权信息
+官方交流qq群：929353806
 
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
+由于已经开放至gitee并且接受提交，所以欢迎大家一起来完善打造一个完美的系统，后续更新迭代均发布在doc.youyacao.com信息。
 
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-版权所有Copyright © 2006-2018 by ThinkPHP (http://thinkphp.cn)
+#### 介绍
+松鼠 短视频系统已经完全开源，请在遵循协议和各条款的情况下合法的使用本产品。
 
-All rights reserved。
+#### 前端目录songshu-vide-page
+源码内容仅前端，并且此代码仅APP，仅考虑了APP的兼容和适配，没有考虑小程序和H5，额外单独做了有h5版本，后续再考虑是否开源，页面结构目录，其他内容参考uniapp官方说明文档。
 
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
+<span style="color:red;font-weight:bold;">此处指讲解自定义的一些目录结构及组件，详细目录结构及其作用请参考UNIAPP官方文档</span>
+- api
+	- index.js `请求后端的API接口文件，所有接口均在此处定义`
+- common
+	- config.js `服务器BaseUrl配置`
+	- request.js `发起网络请求工具类`
+	- uni.css 
+	- uni-nvue.css
+	- util.js `工具类`
+- components `组件相关`
+	- advert
+		- advert-page.vue `广告页组件`
+	- chunlei-video
+		- chunlei-video.vue `自定义视频播放器组件`
+	- footer
+		- footer_nav.vue `底部Tab组件`
+	- refresh
+		- refresh.vue `自定义下拉刷新组件`
+	- video
+		- video-page.vue `自定义视频瀑布流列表页组件`
+- page
+    - im-chat
+	    - im-chat.vue `im聊天页面`
+		- im-chat-group.vue `im群页面`
+		- im-chat-group-info.vue `im群详细信息`
+		- im-chat-choose-user.vue `im选择用户`
+		- im-list.vue `im用户列表`
+		- im-user.vue `im用户详细`
+		- single.vue `im`
+	- advert
+		- advert.vue `启动广告页`
+    - firend-invitiaon
+	    - firend-invitiaon.vue `邀请页面`
+	- index
+		- channel
+			- subTypeList `频道子页`
+				- index.vue `子频道页面`
+				- videoList.vue `频道视频列表页面`
+			- index.vue `频道页面`
+		- download
+		    - download.vue `已下载视频管理`
+		- home 
+			- index.vue `首页`
+		- iliao 
+			- iliao.vue `爱聊文字发布页面`	
+			- sub_comment.vue `爱聊评论发布`	
+		- publish 
+			- subnvue `页面子组件`
+				- typeList.nvue `分类列表弹出窗口`
+			- publish.vue `发布视频页面`
+		- seacher
+			- seacher.vue `搜索页面`
+		- user 
+		    - category-search
+			    - category-search.nvue `分类搜索页面`
+		    - collection
+			    - collection.vue `收藏页面`
+			- invite
+			    - invite.vue `邀请页面`
+			- like-video
+			    - player.vue `我喜欢的视频播放页面`
+				- like-video.vue `我喜欢的视频列表`  
+			- subitem
+			    - create.vue `我发布的视频`   
+				- textimage.vue `我发布的图文`
+			- subject
+			    - record.nvue `视频答题页面`
+			- add_withdraw.vue `新增提现页面`
+			- cardedit.vue `编辑收款信息`
+			- cardlist.vue `收款信息列表`
+			- change.vue `积分变动记录`
+			- follow.vue `我的关注`
+			- index.vue `用户中心首页`
+			- integral.vue `积分充值页面`
+			- inviterecord.vue `邀请记录页面`
+			- withdraw.vue `提现列表页面`
+			- vip.vue `vip充值页面`
+			- selectcard.vue `选择提现银行卡`
+			- pay.vue `支付页面`
+			- follow.vue `关注列表页面`
+			- index.vue `用户中心页面`
+			- other.vue `其他人的用户中心页面`
+		- index.vue `程序主页面`
+	- login
+		- login.vue `登录页面-可直接短信注册登录`
+		- login-user-pass.vue `用户名密码登录页面`
+		- register.vue `用户名邮箱密码注册页面`
+	- setting
+		- account.vue `用户设置`
+		- index.vue `设置页面`
+	- video
+		- subnvue `页面子组件`
+			- drawer.nvue `热门评论弹窗`
+			- forward.nvue `分享弹窗`
+			- subDrawer.nvue `二级评论页面`
+		- full.vue `全屏播放页面`
+		- index.nvue `上下滑动视频播放页面`
+		- index.vue `播放页辅助页面`
+		- videoplay.nvue `新的播放页面`
+	- webview
+	    - webview.vue `web网页预览页面`
+-----------
 
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
+
+#### 服务端目录songshu-video-back
+- .
+- |-- 403.html
+- |-- 404.html
+- |-- CHANGELOG.md
+- |-- LICENSE.txt
+- |-- README.en.md
+- |-- README.md
+- |-- application
+- |   |-- api
+- |   |   |-- command
+- |   |   |   `-- Video.php
+- |   |   |-- common
+- |   |   |   |-- AsyncCommand.php
+- |   |   |   |-- LiveService.php
+- |   |   |   |-- Mail.php
+- |   |   |   `-- Sms.php
+- |   |   |-- config.php
+- |   |   `-- controller
+- |   |       |-- Advert.php
+- |   |       |-- Api.php
+- |   |       |-- Cipher.php
+- |   |       |-- CodePay.php
+- |   |       |-- Collection.php
+- |   |       |-- Comment.php
+- |   |       |-- Config.php
+- |   |       |-- Follow.php
+- |   |       |-- Live.php
+- |   |       |-- Negative.php
+- |   |       |-- NegativeComment.php
+- |   |       |-- Pay.php
+- |   |       |-- PetPay.php
+- |   |       |-- Searcher.php
+- |   |       |-- Skr.php
+- |   |       |-- SkrComment.php
+- |   |       |-- Subject.php
+- |   |       |-- TextImage.php
+- |   |       |-- Type.php
+- |   |       |-- User.php
+- |   |       |-- Video.php
+- |   |       `-- \320\302\275\250\316\304\261\276\316\304\265\265.txt
+- |   |-- command.php
+- |   |-- common
+- |   |   `-- behavior
+- |   |       `-- CronRun.php
+- |   |-- common.php
+- |   |-- config.php
+- |   |-- database.php
+- |   |-- database.php.back
+- |   |-- extra
+- |   |   `-- queue.php
+- |   |-- helper.php
+- |   |-- index
+- |   |   `-- controller
+- |   |       `-- Index.php
+- |   |-- route.php
+- |   `-- tags.php
+- |-- build.php
+- |-- composer.json
+- |-- composer.lock
+- |-- extend
+- |   `-- ptpaysdk
+- |       |-- core
+- |       |   |-- PtSdk.php
+- |       |   |-- ptpay_config.php
+- |       |   `-- ptpay_function.php
+- |       |-- css
+- |       |   |-- layuimini.css
+- |       |   |-- public.css
+- |       |   `-- wechat_pay.css
+- |       |-- nginx.htaccess
+- |       |-- pay.php
+- |       |-- payPage
+- |       |   |-- alipay.jpg
+- |       |   |-- alipay.png
+- |       |   |-- pay.css
+- |       |   |-- pay.php
+- |       |   |-- use_1.png
+- |       |   |-- use_2.png
+- |       |   |-- wave.png
+- |       |   |-- wechat-pay.png
+- |       |   `-- weixin.jpg
+- |       |-- pay_notify.php
+- |       `-- pay_return.php
+- |-- index.html
+- |-- public
+- |   |-- 1.png
+- |   |-- 1.txt
+- |   |-- index.php
+- |   |-- logo.png
+- |   |-- nginx.htaccess
+- |   |-- public.zip
+- |   |-- robots.txt
+- |   |-- router.php
+- |   |-- static
+- |   |   `-- image
+- |   |       |-- head.png
+- |   |       |-- pay-alipay.png
+- |   |       `-- pay-wechat.png
+- |   `-- uploads
+- |       |-- img
+- |       |-- thumb
+- |       |   |-- 1
+- |       |   |   `-- uploads
+- |       |   |-- 3
+- |       |   |   `-- uploads
+- |       |   `-- 5
+- |       |       `-- uploads
+- |       `-- video
+- |           `-- watermark
+- |-- songshu-video-back.iml
+- |-- songshu-video-back.zip
+- |-- think
+- |-- thinkphp
+- |   |-- CONTRIBUTING.md
+- |   |-- LICENSE.txt
+- |   |-- README.md
+- |   |-- base.php
+- |   |-- codecov.yml
+- |   |-- composer.json
+- |   |-- console.php
+- |   |-- convention.php
+- |   |-- helper.php
+- |   |-- lang
+- |   |   `-- zh-cn.php
+- |   |-- library
+- |   |   |-- think
+- |   |   |   |-- App.php
+- |   |   |   |-- Build.php
+- |   |   |   |-- Cache.php
+- |   |   |   |-- Collection.php
+- |   |   |   |-- Config.php
+- |   |   |   |-- Console.php
+- |   |   |   |-- Controller.php
+- |   |   |   |-- Cookie.php
+- |   |   |   |-- Db.php
+- |   |   |   |-- Debug.php
+- |   |   |   |-- Env.php
+- |   |   |   |-- Error.php
+- |   |   |   |-- Exception.php
+- |   |   |   |-- File.php
+- |   |   |   |-- Hook.php
+- |   |   |   |-- Lang.php
+- |   |   |   |-- Loader.php
+- |   |   |   |-- Log.php
+- |   |   |   |-- Model.php
+- |   |   |   |-- Paginator.php
+- |   |   |   |-- Process.php
+- |   |   |   |-- Request.php
+- |   |   |   |-- Response.php
+- |   |   |   |-- Route.php
+- |   |   |   |-- Session.php
+- |   |   |   |-- Template.php
+- |   |   |   |-- Url.php
+- |   |   |   |-- Validate.php
+- |   |   |   |-- View.php
+- |   |   |   |-- cache
+- |   |   |   |   |-- Driver.php
+- |   |   |   |   `-- driver
+- |   |   |   |-- config
+- |   |   |   |   `-- driver
+- |   |   |   |-- console
+- |   |   |   |   |-- Command.php
+- |   |   |   |   |-- Input.php
+- |   |   |   |   |-- LICENSE
+- |   |   |   |   |-- Output.php
+- |   |   |   |   |-- bin
+- |   |   |   |   |-- command
+- |   |   |   |   |-- input
+- |   |   |   |   `-- output
+- |   |   |   |-- controller
+- |   |   |   |   |-- Rest.php
+- |   |   |   |   `-- Yar.php
+- |   |   |   |-- db
+- |   |   |   |   |-- Builder.php
+- |   |   |   |   |-- Connection.php
+- |   |   |   |   |-- Expression.php
+- |   |   |   |   |-- Query.php
+- |   |   |   |   |-- builder
+- |   |   |   |   |-- connector
+- |   |   |   |   `-- exception
+- |   |   |   |-- debug
+- |   |   |   |   |-- Console.php
+- |   |   |   |   `-- Html.php
+- |   |   |   |-- exception
+- |   |   |   |   |-- ClassNotFoundException.php
+- |   |   |   |   |-- DbException.php
+- |   |   |   |   |-- ErrorException.php
+- |   |   |   |   |-- Handle.php
+- |   |   |   |   |-- HttpException.php
+- |   |   |   |   |-- HttpResponseException.php
+- |   |   |   |   |-- PDOException.php
+- |   |   |   |   |-- RouteNotFoundException.php
+- |   |   |   |   |-- TemplateNotFoundException.php
+- |   |   |   |   |-- ThrowableError.php
+- |   |   |   |   `-- ValidateException.php
+- |   |   |   |-- log
+- |   |   |   |   `-- driver
+- |   |   |   |-- model
+- |   |   |   |   |-- Collection.php
+- |   |   |   |   |-- Merge.php
+- |   |   |   |   |-- Pivot.php
+- |   |   |   |   |-- Relation.php
+- |   |   |   |   `-- relation
+- |   |   |   |-- paginator
+- |   |   |   |   `-- driver
+- |   |   |   |-- process
+- |   |   |   |   |-- Builder.php
+- |   |   |   |   |-- Utils.php
+- |   |   |   |   |-- exception
+- |   |   |   |   `-- pipes
+- |   |   |   |-- response
+- |   |   |   |   |-- Json.php
+- |   |   |   |   |-- Jsonp.php
+- |   |   |   |   |-- Redirect.php
+- |   |   |   |   |-- View.php
+- |   |   |   |   `-- Xml.php
+- |   |   |   |-- session
+- |   |   |   |   `-- driver
+- |   |   |   |-- template
+- |   |   |   |   |-- TagLib.php
+- |   |   |   |   |-- driver
+- |   |   |   |   `-- taglib
+- |   |   |   `-- view
+- |   |   |       `-- driver
+- |   |   `-- traits
+- |   |       |-- controller
+- |   |       |   `-- Jump.php
+- |   |       |-- model
+- |   |       |   `-- SoftDelete.php
+- |   |       `-- think
+- |   |           `-- Instance.php
+- |   |-- logo.png
+- |   |-- phpunit.xml
+- |   |-- start.php
+- |   `-- tpl
+- |       |-- default_index.tpl
+- |       |-- dispatch_jump.tpl
+- |       |-- page_trace.tpl
+- |       `-- think_exception.tpl
+- |-- tree.md
+- `-- vendor
+-     |-- alchemy
+-     |   `-- binary-driver
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       |-- phpunit.xml.dist
+-     |       |-- src
+-     |       |   `-- Alchemy
+-     |       `-- tests
+-     |           |-- Alchemy
+-     |           `-- bootstrap.php
+-     |-- aliyuncs
+-     |   `-- oss-sdk-php
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE.md
+-     |       |-- README-CN.md
+-     |       |-- README.md
+-     |       |-- autoload.php
+-     |       |-- build-phar.sh
+-     |       |-- composer.json
+-     |       |-- example.jpg
+-     |       |-- index.php
+-     |       |-- phpunit.xml
+-     |       |-- samples
+-     |       |   |-- Bucket.php
+-     |       |   |-- BucketCors.php
+-     |       |   |-- BucketLifecycle.php
+-     |       |   |-- BucketLogging.php
+-     |       |   |-- BucketReferer.php
+-     |       |   |-- BucketWebsite.php
+-     |       |   |-- Callback.php
+-     |       |   |-- Common.php
+-     |       |   |-- Config.php
+-     |       |   |-- Image.php
+-     |       |   |-- LiveChannel.php
+-     |       |   |-- MultipartUpload.php
+-     |       |   |-- Object.php
+-     |       |   |-- RunAll.php
+-     |       |   `-- Signature.php
+-     |       |-- src
+-     |       |   `-- OSS
+-     |       `-- tests
+-     |           `-- OSS
+-     |-- autoload.php
+-     |-- composer
+-     |   |-- ClassLoader.php
+-     |   |-- LICENSE
+-     |   |-- autoload_classmap.php
+-     |   |-- autoload_files.php
+-     |   |-- autoload_namespaces.php
+-     |   |-- autoload_psr4.php
+-     |   |-- autoload_real.php
+-     |   |-- autoload_static.php
+-     |   `-- installed.json
+-     |-- doctrine
+-     |   `-- cache
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- UPGRADE.md
+-     |       |-- composer.json
+-     |       `-- lib
+-     |           `-- Doctrine
+-     |-- evenement
+-     |   `-- evenement
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       |-- doc
+-     |       |   |-- 00-intro.md
+-     |       |   |-- 01-api.md
+-     |       |   `-- 02-plugin-system.md
+-     |       |-- examples
+-     |       |   |-- benchmark-emit-no-arguments.php
+-     |       |   |-- benchmark-emit-once.php
+-     |       |   |-- benchmark-emit-one-argument.php
+-     |       |   |-- benchmark-emit.php
+-     |       |   `-- benchmark-remove-listener-once.php
+-     |       |-- phpunit.xml.dist
+-     |       |-- src
+-     |       |   `-- Evenement
+-     |       `-- tests
+-     |           `-- Evenement
+-     |-- guzzlehttp
+-     |   |-- guzzle
+-     |   |   |-- CHANGELOG.md
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- UPGRADING.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- BodySummarizer.php
+-     |   |       |-- BodySummarizerInterface.php
+-     |   |       |-- Client.php
+-     |   |       |-- ClientInterface.php
+-     |   |       |-- ClientTrait.php
+-     |   |       |-- Cookie
+-     |   |       |-- Exception
+-     |   |       |-- Handler
+-     |   |       |-- HandlerStack.php
+-     |   |       |-- MessageFormatter.php
+-     |   |       |-- MessageFormatterInterface.php
+-     |   |       |-- Middleware.php
+-     |   |       |-- Pool.php
+-     |   |       |-- PrepareBodyMiddleware.php
+-     |   |       |-- RedirectMiddleware.php
+-     |   |       |-- RequestOptions.php
+-     |   |       |-- RetryMiddleware.php
+-     |   |       |-- TransferStats.php
+-     |   |       |-- Utils.php
+-     |   |       |-- functions.php
+-     |   |       `-- functions_include.php
+-     |   |-- promises
+-     |   |   |-- CHANGELOG.md
+-     |   |   |-- LICENSE
+-     |   |   |-- Makefile
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   |-- phpstan-baseline.neon
+-     |   |   |-- phpstan.neon.dist
+-     |   |   |-- psalm.xml
+-     |   |   `-- src
+-     |   |       |-- AggregateException.php
+-     |   |       |-- CancellationException.php
+-     |   |       |-- Coroutine.php
+-     |   |       |-- Create.php
+-     |   |       |-- Each.php
+-     |   |       |-- EachPromise.php
+-     |   |       |-- FulfilledPromise.php
+-     |   |       |-- Is.php
+-     |   |       |-- Promise.php
+-     |   |       |-- PromiseInterface.php
+-     |   |       |-- PromisorInterface.php
+-     |   |       |-- RejectedPromise.php
+-     |   |       |-- RejectionException.php
+-     |   |       |-- TaskQueue.php
+-     |   |       |-- TaskQueueInterface.php
+-     |   |       |-- Utils.php
+-     |   |       |-- functions.php
+-     |   |       `-- functions_include.php
+-     |   `-- psr7
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       `-- src
+-     |           |-- AppendStream.php
+-     |           |-- BufferStream.php
+-     |           |-- CachingStream.php
+-     |           |-- DroppingStream.php
+-     |           |-- FnStream.php
+-     |           |-- Header.php
+-     |           |-- InflateStream.php
+-     |           |-- LazyOpenStream.php
+-     |           |-- LimitStream.php
+-     |           |-- Message.php
+-     |           |-- MessageTrait.php
+-     |           |-- MimeType.php
+-     |           |-- MultipartStream.php
+-     |           |-- NoSeekStream.php
+-     |           |-- PumpStream.php
+-     |           |-- Query.php
+-     |           |-- Request.php
+-     |           |-- Response.php
+-     |           |-- Rfc7230.php
+-     |           |-- ServerRequest.php
+-     |           |-- Stream.php
+-     |           |-- StreamDecoratorTrait.php
+-     |           |-- StreamWrapper.php
+-     |           |-- UploadedFile.php
+-     |           |-- Uri.php
+-     |           |-- UriNormalizer.php
+-     |           |-- UriResolver.php
+-     |           |-- Utils.php
+-     |           |-- functions.php
+-     |           `-- functions_include.php
+-     |-- neutron
+-     |   `-- temporary-filesystem
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       |-- phpunit.xml.dist
+-     |       |-- src
+-     |       |   `-- Neutron
+-     |       `-- tests
+-     |           |-- Neutron
+-     |           `-- bootstrap.php
+-     |-- php-ffmpeg
+-     |   `-- php-ffmpeg
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       |-- docs
+-     |       |   `-- source
+-     |       |-- phpunit.xml.dist
+-     |       |-- src
+-     |       |   `-- FFMpeg
+-     |       `-- tests
+-     |           |-- Functional
+-     |           |-- Unit
+-     |           |-- bootstrap.php
+-     |           |-- files
+-     |           `-- fixtures
+-     |-- phpmailer
+-     |   `-- phpmailer
+-     |       |-- COMMITMENT
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- SECURITY.md
+-     |       |-- VERSION
+-     |       |-- composer.json
+-     |       |-- get_oauth_token.php
+-     |       |-- language
+-     |       |   |-- phpmailer.lang-af.php
+-     |       |   |-- phpmailer.lang-am.php
+-     |       |   |-- phpmailer.lang-ar.php
+-     |       |   |-- phpmailer.lang-az.php
+-     |       |   |-- phpmailer.lang-ba.php
+-     |       |   |-- phpmailer.lang-be.php
+-     |       |   |-- phpmailer.lang-bg.php
+-     |       |   |-- phpmailer.lang-ca.php
+-     |       |   |-- phpmailer.lang-ch.php
+-     |       |   |-- phpmailer.lang-cs.php
+-     |       |   |-- phpmailer.lang-da.php
+-     |       |   |-- phpmailer.lang-de.php
+-     |       |   |-- phpmailer.lang-el.php
+-     |       |   |-- phpmailer.lang-eo.php
+-     |       |   |-- phpmailer.lang-es.php
+-     |       |   |-- phpmailer.lang-et.php
+-     |       |   |-- phpmailer.lang-fa.php
+-     |       |   |-- phpmailer.lang-fi.php
+-     |       |   |-- phpmailer.lang-fo.php
+-     |       |   |-- phpmailer.lang-fr.php
+-     |       |   |-- phpmailer.lang-gl.php
+-     |       |   |-- phpmailer.lang-he.php
+-     |       |   |-- phpmailer.lang-hi.php
+-     |       |   |-- phpmailer.lang-hr.php
+-     |       |   |-- phpmailer.lang-hu.php
+-     |       |   |-- phpmailer.lang-id.php
+-     |       |   |-- phpmailer.lang-it.php
+-     |       |   |-- phpmailer.lang-ja.php
+-     |       |   |-- phpmailer.lang-ka.php
+-     |       |   |-- phpmailer.lang-ko.php
+-     |       |   |-- phpmailer.lang-lt.php
+-     |       |   |-- phpmailer.lang-lv.php
+-     |       |   |-- phpmailer.lang-mg.php
+-     |       |   |-- phpmailer.lang-ms.php
+-     |       |   |-- phpmailer.lang-nb.php
+-     |       |   |-- phpmailer.lang-nl.php
+-     |       |   |-- phpmailer.lang-pl.php
+-     |       |   |-- phpmailer.lang-pt.php
+-     |       |   |-- phpmailer.lang-pt_br.php
+-     |       |   |-- phpmailer.lang-ro.php
+-     |       |   |-- phpmailer.lang-ru.php
+-     |       |   |-- phpmailer.lang-sk.php
+-     |       |   |-- phpmailer.lang-sl.php
+-     |       |   |-- phpmailer.lang-sr.php
+-     |       |   |-- phpmailer.lang-sv.php
+-     |       |   |-- phpmailer.lang-tl.php
+-     |       |   |-- phpmailer.lang-tr.php
+-     |       |   |-- phpmailer.lang-uk.php
+-     |       |   |-- phpmailer.lang-vi.php
+-     |       |   |-- phpmailer.lang-zh.php
+-     |       |   `-- phpmailer.lang-zh_cn.php
+-     |       `-- src
+-     |           |-- Exception.php
+-     |           |-- OAuth.php
+-     |           |-- PHPMailer.php
+-     |           |-- POP3.php
+-     |           `-- SMTP.php
+-     |-- psr
+-     |   |-- http-client
+-     |   |   |-- CHANGELOG.md
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- ClientExceptionInterface.php
+-     |   |       |-- ClientInterface.php
+-     |   |       |-- NetworkExceptionInterface.php
+-     |   |       `-- RequestExceptionInterface.php
+-     |   |-- http-message
+-     |   |   |-- CHANGELOG.md
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- MessageInterface.php
+-     |   |       |-- RequestInterface.php
+-     |   |       |-- ResponseInterface.php
+-     |   |       |-- ServerRequestInterface.php
+-     |   |       |-- StreamInterface.php
+-     |   |       |-- UploadedFileInterface.php
+-     |   |       `-- UriInterface.php
+-     |   `-- log
+-     |       |-- LICENSE
+-     |       |-- Psr
+-     |       |   `-- Log
+-     |       |-- README.md
+-     |       `-- composer.json
+-     |-- qcloudsms
+-     |   `-- qcloudsms_php
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       |-- demo
+-     |       |   |-- README.md
+-     |       |   |-- composer
+-     |       |   `-- simple
+-     |       |-- docs
+-     |       |   |-- PROJECT_VERSION
+-     |       |   |-- Qcloud
+-     |       |   |-- Qcloud.html
+-     |       |   |-- SAMI_VERSION
+-     |       |   |-- classes.html
+-     |       |   |-- css
+-     |       |   |-- doc-index.html
+-     |       |   |-- fonts
+-     |       |   |-- images
+-     |       |   |-- index.html
+-     |       |   |-- interfaces.html
+-     |       |   |-- js
+-     |       |   |-- namespaces.html
+-     |       |   |-- opensearch.xml
+-     |       |   |-- renderer.index
+-     |       |   |-- sami.js
+-     |       |   |-- search.html
+-     |       |   `-- traits.html
+-     |       |-- gendoc.sh
+-     |       |-- sami_config.php
+-     |       `-- src
+-     |           |-- FileVoiceSender.php
+-     |           |-- SmsMobileStatusPuller.php
+-     |           |-- SmsMultiSender.php
+-     |           |-- SmsSenderUtil.php
+-     |           |-- SmsSingleSender.php
+-     |           |-- SmsStatusPuller.php
+-     |           |-- SmsVoicePromptSender.php
+-     |           |-- SmsVoiceVerifyCodeSender.php
+-     |           |-- TtsVoiceSender.php
+-     |           |-- VoiceFileUploader.php
+-     |           `-- index.php
+-     |-- qiniu
+-     |   |-- CHANGELOG.md
+-     |   |-- CONTRIBUTING.md
+-     |   |-- LICENSE
+-     |   |-- README.md
+-     |   |-- autoload.php
+-     |   |-- composer.json
+-     |   |-- examples
+-     |   |   |-- README.md
+-     |   |   |-- auth.php
+-     |   |   |-- bucket_mgr.php
+-     |   |   |-- bucket_mgr_init.php
+-     |   |   |-- callback.php
+-     |   |   |-- download_token.php
+-     |   |   |-- fetch.php
+-     |   |   |-- file_copy.php
+-     |   |   |-- file_delete.php
+-     |   |   |-- file_move.php
+-     |   |   |-- file_stat.php
+-     |   |   |-- image_url_builder.php
+-     |   |   |-- list_file.php
+-     |   |   |-- mkzip.php
+-     |   |   |-- notify.php
+-     |   |   |-- persistent_fop.php
+-     |   |   |-- persistent_fop_init.php
+-     |   |   |-- persistent_fop_status.php
+-     |   |   |-- pfop_vframe.php
+-     |   |   |-- pfop_watermark.php
+-     |   |   |-- php-logo.png
+-     |   |   |-- qetag.php
+-     |   |   |-- up.php
+-     |   |   |-- upload.php
+-     |   |   |-- upload_and_callback.php
+-     |   |   |-- upload_and_pfop.php
+-     |   |   |-- upload_mgr_init.php
+-     |   |   `-- upload_token.php
+-     |   |-- phpunit.xml.dist
+-     |   |-- src
+-     |   |   `-- Qiniu
+-     |   |       |-- Auth.php
+-     |   |       |-- Config.php
+-     |   |       |-- Etag.php
+-     |   |       |-- Http
+-     |   |       |-- Processing
+-     |   |       |-- Storage
+-     |   |       |-- Zone.php
+-     |   |       `-- functions.php
+-     |   `-- tests
+-     |       |-- Qiniu
+-     |       |   `-- Tests
+-     |       `-- bootstrap.php
+-     |-- qq
+-     |   |-- class
+-     |   |   |-- ErrorCase.class.php
+-     |   |   |-- Oauth.class.php
+-     |   |   |-- QC.class.php
+-     |   |   |-- Recorder.class.php
+-     |   |   `-- URL.class.php
+-     |   |-- comm
+-     |   |   |-- config.php
+-     |   |   |-- inc.php
+-     |   |   `-- utils.php
+-     |   `-- qqConnectAPI.php
+-     |-- ralouphie
+-     |   `-- getallheaders
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       `-- src
+-     |           `-- getallheaders.php
+-     |-- symfony
+-     |   |-- filesystem
+-     |   |   |-- CHANGELOG.md
+-     |   |   |-- Exception
+-     |   |   |   |-- ExceptionInterface.php
+-     |   |   |   |-- FileNotFoundException.php
+-     |   |   |   |-- IOException.php
+-     |   |   |   |-- IOExceptionInterface.php
+-     |   |   |   `-- InvalidArgumentException.php
+-     |   |   |-- Filesystem.php
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   `-- composer.json
+-     |   |-- polyfill-ctype
+-     |   |   |-- Ctype.php
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- bootstrap.php
+-     |   |   `-- composer.json
+-     |   `-- process
+-     |       |-- CHANGELOG.md
+-     |       |-- Exception
+-     |       |   |-- ExceptionInterface.php
+-     |       |   |-- InvalidArgumentException.php
+-     |       |   |-- LogicException.php
+-     |       |   |-- ProcessFailedException.php
+-     |       |   |-- ProcessSignaledException.php
+-     |       |   |-- ProcessTimedOutException.php
+-     |       |   `-- RuntimeException.php
+-     |       |-- ExecutableFinder.php
+-     |       |-- InputStream.php
+-     |       |-- LICENSE
+-     |       |-- PhpExecutableFinder.php
+-     |       |-- PhpProcess.php
+-     |       |-- Pipes
+-     |       |   |-- AbstractPipes.php
+-     |       |   |-- PipesInterface.php
+-     |       |   |-- UnixPipes.php
+-     |       |   `-- WindowsPipes.php
+-     |       |-- Process.php
+-     |       |-- ProcessUtils.php
+-     |       |-- README.md
+-     |       `-- composer.json
+-     |-- tencentcloud
+-     |   `-- tencentcloud-sdk-php
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE
+-     |       |-- README.MD
+-     |       |-- composer.json
+-     |       |-- examples
+-     |       |   |-- cvm
+-     |       |   |-- ecc
+-     |       |   |-- hcm
+-     |       |   |-- scf
+-     |       |   |-- sms
+-     |       |   |-- soe
+-     |       |   `-- tci
+-     |       `-- src
+-     |           |-- QcloudApi
+-     |           `-- TencentCloud
+-     `-- topthink
+-         `-- think-installer
+-             |-- composer.json
+-             `-- src
+-                 |-- Plugin.php
+-                 |-- ThinkExtend.php
+-                 |-- ThinkFramework.php
+-                 `-- ThinkTesting.php
+
+#### 后台管理后端部分songshu-video-admin
+
+- .
+- |-- 403.html
+- |-- 404.html
+- |-- CHANGELOG.md
+- |-- LICENSE.txt
+- |-- README.en.md
+- |-- README.md
+- |-- application
+- |   |-- admin
+- |   |   |-- config.php
+- |   |   `-- controller
+- |   |       |-- Admin.php
+- |   |       |-- Advert.php
+- |   |       |-- Api.php
+- |   |       |-- Cipher.php
+- |   |       |-- Comment.php
+- |   |       |-- Config.php
+- |   |       |-- Login.php
+- |   |       |-- Manager.php
+- |   |       |-- Order.php
+- |   |       |-- PayType.php
+- |   |       |-- Subject.php
+- |   |       |-- TextImage.php
+- |   |       |-- Type.php
+- |   |       |-- Update.php
+- |   |       |-- User.php
+- |   |       |-- Video.php
+- |   |       `-- VipShop.php
+- |   |-- command.php
+- |   |-- common
+- |   |   `-- behavior
+- |   |       `-- CronRun.php
+- |   |-- common.php
+- |   |-- config.php
+- |   |-- database.php
+- |   |-- extra
+- |   |   `-- queue.php
+- |   |-- helper.php
+- |   |-- index
+- |   |   `-- controller
+- |   |       `-- Index.php
+- |   |-- route.php
+- |   `-- tags.php
+- |-- build.php
+- |-- composer.json
+- |-- composer.lock
+- |-- extend
+- |-- index.html
+- |-- mysql
+- |   `-- videofree_20210813_171830.sql.gz
+- |-- public
+- |   |-- index.html
+- |   |-- index.php
+- |   |-- robots.txt
+- |   |-- router.php
+- |   `-- static
+- |       |-- css
+- |       |   `-- app.723b5ea56863dc1ae9c5ee7bd2bf4fb1.css
+- |       |-- fonts
+- |       |   |-- element-icons.535877f.woff
+- |       |   `-- element-icons.732389d.ttf
+- |       |-- img
+- |       |   |-- login-bg.95db843.jpg
+- |       |   |-- qrcode.3f333a4.png
+- |       |   `-- qrcodewx.f900834.png
+- |       `-- js
+- |           |-- 0.7b777de728a9abf76f3a.js
+- |           |-- 1.6d077dcdc404765e8e61.js
+- |           |-- 2.f092a14edd1364ef44fb.js
+- |           |-- 3.f8945850853027e4c127.js
+- |           |-- app.20794959ffbc7ba1cd00.js
+- |           |-- manifest.4d2bb32eb1c08f1b1e0c.js
+- |           `-- vendor.afc27c3b30b6d9b8d63f.js
+- |-- songshu-video-admin.iml
+- |-- think
+- |-- thinkphp
+- |   |-- CONTRIBUTING.md
+- |   |-- LICENSE.txt
+- |   |-- README.md
+- |   |-- base.php
+- |   |-- codecov.yml
+- |   |-- composer.json
+- |   |-- console.php
+- |   |-- convention.php
+- |   |-- helper.php
+- |   |-- lang
+- |   |   `-- zh-cn.php
+- |   |-- library
+- |   |   |-- think
+- |   |   |   |-- App.php
+- |   |   |   |-- Build.php
+- |   |   |   |-- Cache.php
+- |   |   |   |-- Collection.php
+- |   |   |   |-- Config.php
+- |   |   |   |-- Console.php
+- |   |   |   |-- Controller.php
+- |   |   |   |-- Cookie.php
+- |   |   |   |-- Db.php
+- |   |   |   |-- Debug.php
+- |   |   |   |-- Env.php
+- |   |   |   |-- Error.php
+- |   |   |   |-- Exception.php
+- |   |   |   |-- File.php
+- |   |   |   |-- Hook.php
+- |   |   |   |-- Lang.php
+- |   |   |   |-- Loader.php
+- |   |   |   |-- Log.php
+- |   |   |   |-- Model.php
+- |   |   |   |-- Paginator.php
+- |   |   |   |-- Process.php
+- |   |   |   |-- Request.php
+- |   |   |   |-- Response.php
+- |   |   |   |-- Route.php
+- |   |   |   |-- Session.php
+- |   |   |   |-- Template.php
+- |   |   |   |-- Url.php
+- |   |   |   |-- Validate.php
+- |   |   |   |-- View.php
+- |   |   |   |-- cache
+- |   |   |   |   |-- Driver.php
+- |   |   |   |   `-- driver
+- |   |   |   |-- config
+- |   |   |   |   `-- driver
+- |   |   |   |-- console
+- |   |   |   |   |-- Command.php
+- |   |   |   |   |-- Input.php
+- |   |   |   |   |-- LICENSE
+- |   |   |   |   |-- Output.php
+- |   |   |   |   |-- bin
+- |   |   |   |   |-- command
+- |   |   |   |   |-- input
+- |   |   |   |   `-- output
+- |   |   |   |-- controller
+- |   |   |   |   |-- Rest.php
+- |   |   |   |   `-- Yar.php
+- |   |   |   |-- db
+- |   |   |   |   |-- Builder.php
+- |   |   |   |   |-- Connection.php
+- |   |   |   |   |-- Expression.php
+- |   |   |   |   |-- Query.php
+- |   |   |   |   |-- builder
+- |   |   |   |   |-- connector
+- |   |   |   |   `-- exception
+- |   |   |   |-- debug
+- |   |   |   |   |-- Console.php
+- |   |   |   |   `-- Html.php
+- |   |   |   |-- exception
+- |   |   |   |   |-- ClassNotFoundException.php
+- |   |   |   |   |-- DbException.php
+- |   |   |   |   |-- ErrorException.php
+- |   |   |   |   |-- Handle.php
+- |   |   |   |   |-- HttpException.php
+- |   |   |   |   |-- HttpResponseException.php
+- |   |   |   |   |-- PDOException.php
+- |   |   |   |   |-- RouteNotFoundException.php
+- |   |   |   |   |-- TemplateNotFoundException.php
+- |   |   |   |   |-- ThrowableError.php
+- |   |   |   |   `-- ValidateException.php
+- |   |   |   |-- log
+- |   |   |   |   `-- driver
+- |   |   |   |-- model
+- |   |   |   |   |-- Collection.php
+- |   |   |   |   |-- Merge.php
+- |   |   |   |   |-- Pivot.php
+- |   |   |   |   |-- Relation.php
+- |   |   |   |   `-- relation
+- |   |   |   |-- paginator
+- |   |   |   |   `-- driver
+- |   |   |   |-- process
+- |   |   |   |   |-- Builder.php
+- |   |   |   |   |-- Utils.php
+- |   |   |   |   |-- exception
+- |   |   |   |   `-- pipes
+- |   |   |   |-- response
+- |   |   |   |   |-- Json.php
+- |   |   |   |   |-- Jsonp.php
+- |   |   |   |   |-- Redirect.php
+- |   |   |   |   |-- View.php
+- |   |   |   |   `-- Xml.php
+- |   |   |   |-- session
+- |   |   |   |   `-- driver
+- |   |   |   |-- template
+- |   |   |   |   |-- TagLib.php
+- |   |   |   |   |-- driver
+- |   |   |   |   `-- taglib
+- |   |   |   `-- view
+- |   |   |       `-- driver
+- |   |   `-- traits
+- |   |       |-- controller
+- |   |       |   `-- Jump.php
+- |   |       |-- model
+- |   |       |   `-- SoftDelete.php
+- |   |       `-- think
+- |   |           `-- Instance.php
+- |   |-- logo.png
+- |   |-- phpunit.xml
+- |   |-- start.php
+- |   `-- tpl
+- |       |-- default_index.tpl
+- |       |-- dispatch_jump.tpl
+- |       |-- page_trace.tpl
+- |       `-- think_exception.tpl
+- |-- tree.md
+- `-- vendor
+-     |-- aliyuncs
+-     |   `-- oss-sdk-php
+-     |       |-- CHANGELOG.md
+-     |       |-- LICENSE.md
+-     |       |-- README-CN.md
+-     |       |-- README.md
+-     |       |-- autoload.php
+-     |       |-- build-phar.sh
+-     |       |-- composer.json
+-     |       |-- example.jpg
+-     |       |-- index.php
+-     |       |-- phpunit.xml
+-     |       |-- samples
+-     |       |   |-- Bucket.php
+-     |       |   |-- BucketCors.php
+-     |       |   |-- BucketLifecycle.php
+-     |       |   |-- BucketLogging.php
+-     |       |   |-- BucketReferer.php
+-     |       |   |-- BucketWebsite.php
+-     |       |   |-- Callback.php
+-     |       |   |-- Common.php
+-     |       |   |-- Config.php
+-     |       |   |-- Image.php
+-     |       |   |-- LiveChannel.php
+-     |       |   |-- MultipartUpload.php
+-     |       |   |-- Object.php
+-     |       |   |-- RunAll.php
+-     |       |   `-- Signature.php
+-     |       |-- src
+-     |       |   `-- OSS
+-     |       `-- tests
+-     |           `-- OSS
+-     |-- autoload.php
+-     |-- composer
+-     |   |-- ClassLoader.php
+-     |   |-- LICENSE
+-     |   |-- autoload_classmap.php
+-     |   |-- autoload_files.php
+-     |   |-- autoload_namespaces.php
+-     |   |-- autoload_psr4.php
+-     |   |-- autoload_real.php
+-     |   |-- autoload_static.php
+-     |   `-- installed.json
+-     |-- qiniu
+-     |   |-- CHANGELOG.md
+-     |   |-- CONTRIBUTING.md
+-     |   |-- LICENSE
+-     |   |-- README.md
+-     |   |-- autoload.php
+-     |   |-- composer.json
+-     |   |-- examples
+-     |   |   |-- README.md
+-     |   |   |-- auth.php
+-     |   |   |-- bucket_mgr.php
+-     |   |   |-- bucket_mgr_init.php
+-     |   |   |-- callback.php
+-     |   |   |-- download_token.php
+-     |   |   |-- fetch.php
+-     |   |   |-- file_copy.php
+-     |   |   |-- file_delete.php
+-     |   |   |-- file_move.php
+-     |   |   |-- file_stat.php
+-     |   |   |-- image_url_builder.php
+-     |   |   |-- list_file.php
+-     |   |   |-- mkzip.php
+-     |   |   |-- notify.php
+-     |   |   |-- persistent_fop.php
+-     |   |   |-- persistent_fop_init.php
+-     |   |   |-- persistent_fop_status.php
+-     |   |   |-- pfop_vframe.php
+-     |   |   |-- pfop_watermark.php
+-     |   |   |-- php-logo.png
+-     |   |   |-- qetag.php
+-     |   |   |-- up.php
+-     |   |   |-- upload.php
+-     |   |   |-- upload_and_callback.php
+-     |   |   |-- upload_and_pfop.php
+-     |   |   |-- upload_mgr_init.php
+-     |   |   `-- upload_token.php
+-     |   |-- phpunit.xml.dist
+-     |   |-- src
+-     |   |   `-- Qiniu
+-     |   |       |-- Auth.php
+-     |   |       |-- Config.php
+-     |   |       |-- Etag.php
+-     |   |       |-- Http
+-     |   |       |-- Processing
+-     |   |       |-- Storage
+-     |   |       |-- Zone.php
+-     |   |       `-- functions.php
+-     |   `-- tests
+-     |       |-- Qiniu
+-     |       |   `-- Tests
+-     |       `-- bootstrap.php
+-     |-- topthink
+-     |   |-- think-captcha
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- assets
+-     |   |   |   |-- bgs
+-     |   |   |   |-- ttfs
+-     |   |   |   `-- zhttfs
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Captcha.php
+-     |   |       |-- CaptchaController.php
+-     |   |       `-- helper.php
+-     |   |-- think-helper
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Arr.php
+-     |   |       |-- Hash.php
+-     |   |       |-- Str.php
+-     |   |       |-- Time.php
+-     |   |       |-- hash
+-     |   |       `-- helper.php
+-     |   |-- think-image
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   |-- phpunit.xml
+-     |   |   |-- src
+-     |   |   |   |-- Image.php
+-     |   |   |   `-- image
+-     |   |   `-- tests
+-     |   |       |-- CropTest.php
+-     |   |       |-- FlipTest.php
+-     |   |       |-- InfoTest.php
+-     |   |       |-- RotateTest.php
+-     |   |       |-- TestCase.php
+-     |   |       |-- TextTest.php
+-     |   |       |-- ThumbTest.php
+-     |   |       |-- WaterTest.php
+-     |   |       |-- autoload.php
+-     |   |       |-- images
+-     |   |       `-- tmp
+-     |   |-- think-installer
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Plugin.php
+-     |   |       |-- ThinkExtend.php
+-     |   |       |-- ThinkFramework.php
+-     |   |       `-- ThinkTesting.php
+-     |   |-- think-migration
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   |-- phinx
+-     |   |   |   |-- CHANGELOG.md
+-     |   |   |   |-- CONTRIBUTING.md
+-     |   |   |   |-- LICENSE
+-     |   |   |   |-- README.md
+-     |   |   |   `-- src
+-     |   |   `-- src
+-     |   |       |-- Command.php
+-     |   |       |-- Migrator.php
+-     |   |       |-- Seeder.php
+-     |   |       |-- command
+-     |   |       |-- config.php
+-     |   |       `-- db
+-     |   |-- think-mongo
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Builder.php
+-     |   |       |-- Connection.php
+-     |   |       `-- Query.php
+-     |   |-- think-oracle
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Builder.php
+-     |   |       `-- Connection.php
+-     |   |-- think-queue
+-     |   |   |-- LICENSE
+-     |   |   |-- README.md
+-     |   |   |-- composer.json
+-     |   |   `-- src
+-     |   |       |-- Queue.php
+-     |   |       |-- common.php
+-     |   |       |-- config.php
+-     |   |       `-- queue
+-     |   `-- think-worker
+-     |       |-- LICENSE
+-     |       |-- README.md
+-     |       |-- composer.json
+-     |       `-- src
+-     |           `-- Server.php
+-     `-- workerman
+-         `-- workerman
+-             |-- Autoloader.php
+-             |-- Connection
+-             |   |-- AsyncTcpConnection.php
+-             |   |-- AsyncUdpConnection.php
+-             |   |-- ConnectionInterface.php
+-             |   |-- TcpConnection.php
+-             |   `-- UdpConnection.php
+-             |-- Events
+-             |   |-- Ev.php
+-             |   |-- Event.php
+-             |   |-- EventInterface.php
+-             |   |-- Libevent.php
+-             |   |-- React
+-             |   |-- Select.php
+-             |   `-- Swoole.php
+-             |-- Lib
+-             |   |-- Constants.php
+-             |   `-- Timer.php
+-             |-- MIT-LICENSE.txt
+-             |-- Protocols
+-             |   |-- Frame.php
+-             |   |-- Http
+-             |   |-- Http.php
+-             |   |-- ProtocolInterface.php
+-             |   |-- Text.php
+-             |   |-- Websocket.php
+-             |   `-- Ws.php
+-             |-- README.md
+-             |-- WebServer.php
+-             |-- Worker.php
+-             `-- composer.json
+
+
+
+#### 后台管理前端部分songshu-video-admin-vue
+
+- |-- README.en.md
+- |-- README.md
+- |-- build
+- |   |-- build.js
+- |   |-- check-versions.js
+- |   |-- logo.png
+- |   |-- utils.js
+- |   |-- vue-loader.conf.js
+- |   |-- webpack.base.conf.js
+- |   |-- webpack.dev.conf.js
+- |   `-- webpack.prod.conf.js
+- |-- config
+- |   |-- dev.env.js
+- |   |-- index.js
+- |   `-- prod.env.js
+- |-- index.html
+- |-- package-lock.json
+- |-- package.json
+- |-- report.20200205.211754.15796.0.001.json
+- |-- songshu-video-admin-vue.iml
+- |-- src
+- |   |-- App.vue
+- |   |-- api
+- |   |   |-- config.js
+- |   |   `-- index.js
+- |   |-- assets
+- |   |   |-- css
+- |   |   |   |-- color-dark.css
+- |   |   |   |-- icon.css
+- |   |   |   |-- main.css
+- |   |   |   `-- theme-green
+- |   |   |       |-- color-green.css
+- |   |   |       |-- fonts
+- |   |   |       `-- index.css
+- |   |   |-- img
+- |   |   |   |-- img.jpg
+- |   |   |   |-- log.tar.gz
+- |   |   |   |-- login-bg.jpg
+- |   |   |   |-- logo.png
+- |   |   |   |-- qrcode.png
+- |   |   |   `-- qrcodewx.png
+- |   |   `-- logo.png
+- |   |-- components
+- |   |   |-- HelloWorld.vue
+- |   |   |-- common
+- |   |   |   |-- Header.vue
+- |   |   |   |-- Home.vue
+- |   |   |   |-- Sidebar.vue
+- |   |   |   |-- Tags.vue
+- |   |   |   |-- bus.js
+- |   |   |   |-- directives.js
+- |   |   |   `-- i18n.js
+- |   |   `-- page
+- |   |       |-- 403.vue
+- |   |       |-- 404.vue
+- |   |       |-- Admin
+- |   |       |   |-- List.vue
+- |   |       |   `-- Log.vue
+- |   |       |-- Advert
+- |   |       |   `-- List.vue
+- |   |       |-- Config
+- |   |       |   |-- Aliyun.vue
+- |   |       |   |-- Basic.vue
+- |   |       |   |-- Comment.vue
+- |   |       |   |-- Extra.vue
+- |   |       |   |-- FTP.vue
+- |   |       |   |-- Mail.vue
+- |   |       |   |-- Payment.vue
+- |   |       |   |-- QQ.vue
+- |   |       |   |-- QiNiu.vue
+- |   |       |   |-- SafeCy.vue
+- |   |       |   |-- Seo.vue
+- |   |       |   |-- Sms.vue
+- |   |       |   |-- Video.vue
+- |   |       |   |-- Wechat.vue
+- |   |       |   `-- Weibo.vue
+- |   |       |-- Dashboard.vue
+- |   |       |-- Login.vue
+- |   |       |-- Order
+- |   |       |   `-- List.vue
+- |   |       |-- TextImage
+- |   |       |   `-- List.vue
+- |   |       |-- Type
+- |   |       |   `-- List.vue
+- |   |       |-- Update
+- |   |       |   `-- List.vue
+- |   |       |-- User
+- |   |       |   |-- Change.vue
+- |   |       |   |-- Comment.vue
+- |   |       |   |-- Invite.vue
+- |   |       |   |-- List.vue
+- |   |       |   |-- Log.vue
+- |   |       |   |-- LogAction.vue
+- |   |       |   `-- Withdraw.vue
+- |   |       |-- Video
+- |   |       |   `-- List.vue
+- |   |       `-- Vip
+- |   |           |-- PayType.vue
+- |   |           `-- VipShop.vue
+- |   |-- main.js
+- |   |-- router
+- |   |   `-- index.js
+- |   |-- store
+- |   |   `-- index.js
+- |   `-- utils
+- |       |-- encrypt.js
+- |       |-- index.js
+- |       `-- request.js
+- |-- static
+- |-- tree.md
+
+
+
+
+
+#### 安装教程
+
+请查看详细的安装教程[](https://doc.youyacao.com/web/#/4?page_id=25)
+
+#### 使用说明
+
+1.  本项目代码仅仅前端代码，无后端代码也没有后台管理代码，通信接口为https://videofree.youyacao.com,需要完整匹配后端。
+其次后端我们开放了游客账户可以登录查看部分数据
+https://videofreeadmin.youyacao.com
+账户 adminkan  密码 123456
+
+2.  演示数据也均来自我们的后端，可正常发布视频，发布图文，发布点评等操作。
+3.  开源代码仅供学习研究参考禁止用于商业用途，前端部分将持续更新。
+
+
+#### 接口文档说明(最早期松鼠版本是没有写的，此处我们将会持续更新完善):
+
+https://doc.youyacao.com/web/#/17?page_id=199
+对比下我们新版写的：
+https://doc.youyacao.com/web/#/16?page_id=93
+ 
+ 
+差距还是很大很大了
+
+此地址可以详细查看后端接口文档供参考！
+
+另外写在最后，如果觉得对您能够带来帮助，劳您大驾给个小星星表示支持一下，可能我们考虑后期我们将不断分享开发的很多项目。
+
+另外可以关注下我们新产品，蜻蜓s系统，蜻蜓f系统以及最新推出的蜻蜓G系统纯原生前端-后端java-的系统即将发布。尽情期待
+
+
+#### 技术支持
+
+可购买299元/位的论坛技术支持或者10K/年的技术维护支持。
+
+#### 官方客服联系
+
+联系QQ:422108995  交流群：929353806
