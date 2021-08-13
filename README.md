@@ -1432,16 +1432,17 @@ API接口文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.yo
 #### 安装教程
 
 请查看详细的安装教程[](https://doc.youyacao.com/web/#/4?page_id=25)
+[](https://doc.youyacao.com/web/#/4?page_id=25)
 
 #### 使用说明
 
-1.  本项目代码仅仅前端代码，无后端代码也没有后台管理代码，通信接口为https://videofree.youyacao.com,需要完整匹配后端。
+1.  本项目前端，后端，管理后台所有代码均已开源，测试代码通信接口为https://videofree.youyacao.com,搭建需要需要完整匹配后端。
 其次后端我们开放了游客账户可以登录查看部分数据
 https://videofreeadmin.youyacao.com
 账户 adminkan  密码 123456
 
-2.  演示数据也均来自我们的后端，可正常发布视频，发布图文，发布点评等操作。
-3.  开源代码仅供学习研究参考禁止用于商业用途，前端部分将持续更新。
+2.  请详细查看安装教程，数据库文件是在songshu-video-admin文件里的。
+3.  开源代码请在遵循条款和开源许可的请看下合法使用。
 
 
 #### 接口文档说明(最早期松鼠版本是没有写的，此处我们将会持续更新完善):
