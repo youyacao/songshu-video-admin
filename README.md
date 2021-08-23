@@ -30,11 +30,13 @@
 
 查看协议：[https://songshu.youyacao.com/detail/240.html](https://songshu.youyacao.com/detail/240.html)
 
+系统演示地址：[https://doc.youyacao.com/web/#/22?page_id=457](https://doc.youyacao.com/web/#/22?page_id=457)
+
 免费gitee下载地址：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
 论坛下载地址：[https://bbs.youyacao.com/thread-164-1-1.html](https://bbs.youyacao.com/thread-164-1-1.html)
 
-安装文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.youyacao.com/web/#/17?page_id=199)
+安装文档：[https://doc.youyacao.com/web/#/4?page_id=22](https://doc.youyacao.com/web/#/4?page_id=22)
 
 API接口文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.youyacao.com/web/#/17?page_id=199)
 
@@ -49,15 +51,15 @@ API接口文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.yo
 松鼠 短视频系统已经完全开源，请在遵循协议和各条款的情况下合法的使用本产品。
 
 #### 前端目录songshu-vide-page
-[](https://doc.youyacao.com/web/#/4?page_id=317)
+[https://doc.youyacao.com/web/#/4?page_id=317](https://doc.youyacao.com/web/#/4?page_id=317)
 
 #### 服务端目录songshu-video-back
-[](https://doc.youyacao.com/web/#/4?page_id=316)
+[https://doc.youyacao.com/web/#/4?page_id=316](https://doc.youyacao.com/web/#/4?page_id=316)
 #### 后台管理后端部分songshu-video-admin
 
-[](https://doc.youyacao.com/web/#/4?page_id=640)
+[https://doc.youyacao.com/web/#/4?page_id=640](https://doc.youyacao.com/web/#/4?page_id=640)
 #### 后台管理前端部分songshu-video-admin-vue
-[](https://doc.youyacao.com/web/#/4?page_id=639)
+[https://doc.youyacao.com/web/#/4?page_id=639](https://doc.youyacao.com/web/#/4?page_id=639)
 
 
 #### 安装教程
