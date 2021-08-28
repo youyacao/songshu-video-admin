@@ -64,8 +64,8 @@ API接口文档：[https://doc.youyacao.com/web/#/17?page_id=199](https://doc.yo
 
 #### 安装教程
 
-请查看详细的安装教程[](https://doc.youyacao.com/web/#/4?page_id=25)
-[](https://doc.youyacao.com/web/#/4?page_id=25)
+[请查看松鼠的安装教程](https://doc.youyacao.com/web/#/4?page_id=22)
+[请查看蜻蜓的安装教程](https://doc.youyacao.com/web/#/8?page_id=51)
 
 #### 使用说明
 
@@ -94,10 +94,10 @@ https://doc.youyacao.com/web/#/16?page_id=93
 另外可以关注下我们新产品，蜻蜓s系统，蜻蜓f系统以及最新推出的蜻蜓G系统纯原生前端-后端java-的系统即将发布。尽情期待
 
 
-#### 技术支持
+#### 技术支持和商业授权
 
-可购买299元/位的论坛技术支持或者10K/年的技术维护支持。
+登陆[zhengban.youyacao.com](https://zhengban.youyacao.com)购买商业授权或者技术支持。
 
 #### 官方客服联系
 
-联系QQ:422108995  交流群：929353806
+企业QQ:2853810243  交流群：929353806
