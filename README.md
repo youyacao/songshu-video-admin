@@ -6,6 +6,29 @@
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/b14108056bdd6e96cfb16cae54976a0e.gif#pic_center)
 
 
+#### 后台端截图介绍
+
+
+登陆页面
+
+![](https://doc.youyacao.com/server/index.php?s=/api/attachment/visitFile/sign/8f83164100310889021b7e3b4c82f5ea)
+
+
+
+
+首页：
+
+![](https://doc.youyacao.com/server/index.php?s=/api/attachment/visitFile/sign/48dd0f1ce02f9df6a3c16b65a1babc5e)
+
+用户列表：
+![](https://doc.youyacao.com/server/index.php?s=/api/attachment/visitFile/sign/b9c8775858b36885dba823c376808850)
+视频列表：
+![](https://doc.youyacao.com/server/index.php?s=/api/attachment/visitFile/sign/2e26384dfbc3ca2cce34244509d6e83c)
+配置页面：
+
+![](https://doc.youyacao.com/server/index.php?s=/api/attachment/visitFile/sign/4dcc0bc00f14b9d4f352f5dcccff23df)
+
+
 #### 仓库关联
 前端：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
