@@ -30,14 +30,15 @@
 
 
 #### 仓库关联
+
+
 前端：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
-服务端：[https://gitee.com/youyacao/songshu-video-admin/](https://gitee.com/youyacao/songshu-video-admin/)
+服务端：[https://gitee.com/youyacao/songshu-video-back](https://gitee.com/youyacao/songshu-video-back)
 
-后台管理：[https://gitee.com/youyacao/songshu-video-admin/tree/master/](https://gitee.com/youyacao/songshu-video-admin/tree/master/)
+后台管理：[https://gitee.com/youyacao/songshu-video-admin/](https://gitee.com/youyacao/songshu-video-admin/)
 
 后台管理的前端：[https://gitee.com/youyacao/songshu-video-admin-vue/tree/develop/](https://gitee.com/youyacao/songshu-video-admin-vue/tree/develop/)
-
 
 
 注意后端和后台管理前端要用develop分支，其他部分用master分支
