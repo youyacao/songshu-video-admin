@@ -4,5 +4,3 @@ runtime
 *.zip
 .user.ini
 .htaccess
-public/static/*
-public/index.html
