@@ -32,7 +32,7 @@
 #### 仓库关联
 前端：[https://gitee.com/youyacao/songshu-video-page](https://gitee.com/youyacao/songshu-video-page)
 
-服务端：[https://gitee.com/youyacao/songshu-video-back/tree/develop/](https://gitee.com/youyacao/songshu-video-back/tree/develop/)
+服务端：[https://gitee.com/youyacao/songshu-video-admin/](https://gitee.com/youyacao/songshu-video-admin/)
 
 后台管理：[https://gitee.com/youyacao/songshu-video-admin/tree/master/](https://gitee.com/youyacao/songshu-video-admin/tree/master/)
 
